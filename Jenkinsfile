@@ -30,6 +30,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
+                . venv/bin/activate
                 python3 hello.py
                 python3 hello.py --name=Hamza
                 '''

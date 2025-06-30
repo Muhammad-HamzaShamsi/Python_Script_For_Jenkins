@@ -8,11 +8,20 @@ pipeline {
         pollSCM '*/5 * * * *' // Runs every 5 minutes
       }
     stages {
+        stage('Install Requirements'){
+            steps{
+                sh '''
+                python3 -m venv venv
+                . venv/bin/activate
+                pip install -r requirements.txt
+                '''
+            }
+        }
         stage('Build') {
             steps {
                 echo "Building.."
                 sh '''
-                pip install -r requirements.txt
+                echo "doing test stuff.."
                 '''
             }
         }
